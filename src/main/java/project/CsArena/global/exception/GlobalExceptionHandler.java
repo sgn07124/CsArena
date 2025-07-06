@@ -38,7 +38,15 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ApiErrorResponse> handleEnumParseError(MethodArgumentTypeMismatchException e) {
-        log.error("잘못된 enum 값 요청 - {}", e.getValue(), e);
+        log.error("잘못된 enum 값 또는 파라미터 타입 요청 - {}", e.getValue(), e);
+
+        Throwable cause = e.getCause();
+        while (cause != null) {
+            if (cause instanceof DateTimeParseException) {
+                return buildErrorResponse(ApiErrorCode.DATE_INVALID_ERROR);
+            }
+            cause = cause.getCause();
+        }
 
         return buildErrorResponse(ApiErrorCode.TYPE_MISMATCH_ERROR);
     }
