@@ -2,15 +2,19 @@ name: Test Coverage with Codecov
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: 
+      - develop
   pull_request:
-    branches: [ "develop", "main" ]
+    branches:
+      - develop
+      - main
 
 jobs:
   test-coverage:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: write
 
     steps:
     - name: Checkout code
@@ -29,6 +33,6 @@ jobs:
       run: ./gradlew test jacocoTestReport
 
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
