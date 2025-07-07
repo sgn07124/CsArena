@@ -9,6 +9,11 @@ use_repo_settings_file = true
 patch_extension_skip_types = [".md", ".txt"]
 ignore_pr_title = ["^\\[Auto\\]", "^Auto", "^\\[Skip\\]", "^Skip"]
 
+[github_action_config]
+auto_review = true
+auto_describe = true
+auto_improve = false
+pr_actions = ["opened", "reopened", "ready_for_review", "synchronize"]
 
 [pr_reviewer]
 extra_instructions = """\
