@@ -5,6 +5,7 @@ on:
     branches: 
       - develop
   pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
     branches:
       - develop
       - main
