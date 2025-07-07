@@ -4,6 +4,8 @@ on:
     branches:
       - develop
   issue_comment:
+    types: [created]
+  
 jobs:
   pr_agent_job:
     if: ${{ github.event.sender.type != 'Bot' }}
