@@ -21,4 +21,11 @@ class HealthCheckControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("SUCCESS"));
     }
+
+    @Test
+    void testCheck_shouldReturnOk() throws Exception {
+        mockMvc.perform(get("/health"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("OK"));
+    }
 }
