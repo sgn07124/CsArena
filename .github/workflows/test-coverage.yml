@@ -2,15 +2,19 @@ name: Test Coverage with Codecov
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: 
+      - develop
   pull_request:
-    branches: [ "develop", "main" ]
+    branches:
+      - develop
+      - main
 
 jobs:
   test-coverage:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: write
 
     steps:
     - name: Checkout code
