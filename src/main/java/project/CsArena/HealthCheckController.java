@@ -10,4 +10,9 @@ public class HealthCheckController {
     public String healthCheck() {
         return "OK";
     }
+
+    @GetMapping("/test-coverage")
+    public String testCheck() {
+        return "SUCCESS";
+    }
 }
