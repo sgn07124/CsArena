@@ -48,4 +48,8 @@ test {
 }
 jacocoTestReport {
 	dependsOn test // 리포트 생성을 위해서는 test가 먼저 완료되어야 함
+	reports {
+		xml.required.set(true)
+		html.required.set(false)
+	}
 }
